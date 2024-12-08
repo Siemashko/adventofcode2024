@@ -18,7 +18,6 @@ def is_suffix_matching(a, suffix):
 
 
 def check_operations(test: int, xs: List[int]):
-    # print(test, xs)
     if test < 0:
         return False
     if len(xs) == 0:
@@ -40,31 +39,6 @@ def check_operations(test: int, xs: List[int]):
     
     return valid or check_operations(int(test-x), new_xs)
 
-# def check_operations_with_prefix(test: int, xs: List[int]):
-#     try:
-#         valid = check_operations(test, xs)
-#         if not valid:
-#             for i in range(len(xs)):
-#                 prefixes = set()
-#                 print(xs[:i+1])
-#                 for x in xs[:i+1]:
-#                     if len(prefixes) > 0:
-#                         prefixes = {p+x for p in prefixes}.union({p*x for p in prefixes})
-#                     else:
-#                         prefixes = {x}
-#                 print(test, xs, prefixes)
-#                 for p in prefixes:
-#                     if test == p and not i == len(xs)-1:
-#                         continue
-#                     if is_prefix_matching(test, p):
-#                         valid = check_operations_with_prefix(int(str(test)[len(str(p)):]), xs[i+1:])
-#                     if valid: break
-#                 if valid: break
-#     except Exception as e:
-#         raise e
-#     return valid
-
-    
 
 def main():
     test = False
@@ -84,9 +58,6 @@ def main():
             values = [int(val) for val in values_raw.strip().split(' ')]
             if check_operations(test_value, values):
                 result += test_value
-            #     print(i, True)
-            # else:
-            #     print(i, False)
         
     with open(output_path, "w") as f_out:
         f_out.write(str(result))
